@@ -1,0 +1,25 @@
+{
+  "name": "qri",
+  "version": "1.0.0",
+  "description": "A Quantum-Resistant Identifier (QRI) generation library providing robust, secure identifiers with optional cryptographic signatures, designed to be resistant to quantum computing threats.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx jest"
+  },
+  "keywords": [
+    "identifier",
+    "uuid",
+    "crypto",
+    "nodejs",
+    "open-source"
+  ],
+  "author": "Atomized-titan",
+  "license": "ISC",
+  "dependencies": {
+    "base-convert-int-array": "^1.0.1",
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
