@@ -10,10 +10,10 @@ The Quantum-Resistant Identifier (QRI) system provides a robust, secure method f
 
 ## Installation
 
-To install the QRI package, run the following command in your project directory:
+To install the QRID package, run the following command in your project directory:
 
 ```bash
-npm install your-qri-package-name
+npm install qrid
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ npm install your-qri-package-name
 To generate a QRI without a cryptographic signature:
 
 ```javascript
-const QRI = require("your-qri-package-name");
+const QRI = require("qrid");
 
 async function generateQRI() {
   const qri = await QRI.generate();
@@ -38,7 +38,7 @@ generateQRI();
 To generate a QRI with a cryptographic signature, you must provide a private key:
 
 ```javascript
-const QRI = require("your-qri-package-name");
+const QRI = require("qrid");
 
 const privateKey = `-----BEGIN RSA PRIVATE KEY-----
 MIIEpAIBAAKCAQEA....YOUR_PRIVATE_KEY....AQABAoIBAQCyD....
@@ -57,7 +57,7 @@ generateQRIWithSignature();
 To validate a QRI (with or without a signature):
 
 ```javascript
-const QRI = require("your-qri-package-name");
+const QRI = require("qrid");
 
 async function validateQRI() {
   const qri = await QRI.generate();
@@ -86,7 +86,7 @@ To generate a QRI with RSA digital signature:
 
 ```javascript
 const crypto = require("crypto");
-const QRI = require("your-qri-package-name");
+const QRI = require("qrid");
 
 // Generate RSA keys synchronously
 const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
