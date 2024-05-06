@@ -16,7 +16,7 @@ declare class QRI {
 
   toString(): string;
 
-  static generate(options?: { privateKey?: string }): Promise<QRI>;
+  static generate(options?: { privateKey?: string }): QRI;
   static formatTimestamp(date: Date): string;
   static generateRandomSegment(): string;
   static generateChecksum(data: string): string;

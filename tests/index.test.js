@@ -2,7 +2,7 @@ const QRI = require("../index");
 
 describe("Quantum-Resistant Identifier System", () => {
   test("QRI generation produces a valid instance without signature", async () => {
-    const qri = await QRI.generate();
+    const qri = QRI.generate();
     expect(qri).toBeDefined();
     expect(qri.toString()).toMatch(/^QRIv1-/);
     expect(qri.signature).toBe(""); // Expect no signature when not using a private key
@@ -10,14 +10,14 @@ describe("Quantum-Resistant Identifier System", () => {
 
   test("QRI generation produces a valid instance with signature", async () => {
     const privateKey = QRI.privateKey; // Ensure this is correctly defined
-    const qri = await QRI.generate({ privateKey });
+    const qri = QRI.generate({ privateKey });
     expect(qri).toBeDefined();
     expect(qri.toString()).toMatch(/^QRIv1-/);
     expect(qri.signature).not.toBe(""); // Should have a signature
   });
 
   test("QRI has correct segments", async () => {
-    const qri = await QRI.generate();
+    const qri = QRI.generate();
     const parts = qri.toString().split("-");
     expect(parts).toHaveLength(4); // No signature segment when no private key
     expect(parts[0]).toBe("QRIv1");
@@ -27,13 +27,13 @@ describe("Quantum-Resistant Identifier System", () => {
   });
 
   test("QRI validation confirms unaltered QRI", async () => {
-    const qri = await QRI.generate();
+    const qri = QRI.generate();
     const isValid = QRI.isValid(qri);
     expect(isValid).toBe(true);
   });
 
   test("QRI validation fails with altered data", async () => {
-    const qri = await QRI.generate();
+    const qri = QRI.generate();
     const qriStr = qri.toString();
     const alteredQriStr = qriStr.replace(
       qri.randomSegment,
@@ -44,7 +44,7 @@ describe("Quantum-Resistant Identifier System", () => {
   });
 
   test("QRI encode and decode", async () => {
-    const qri = await QRI.generate();
+    const qri = QRI.generate();
     const parsedQri = QRI.parse(qri.toString());
     expect(qri.toString()).toEqual(parsedQri.toString());
     expect(QRI.isValid(parsedQri)).toBe(true);
@@ -57,7 +57,7 @@ describe("Quantum-Resistant Identifier System", () => {
   });
 
   test("QRI properties are accessible and correct", async () => {
-    const qri = await QRI.generate();
+    const qri = QRI.generate();
     expect(typeof qri.timestamp).toBe("string");
     expect(qri.randomSegment).toHaveLength(32);
     expect(qri.checksum).toHaveLength(32);
@@ -65,20 +65,20 @@ describe("Quantum-Resistant Identifier System", () => {
   });
 
   test("QRI comparison works correctly", async () => {
-    const qri1 = await QRI.generate();
-    const qri2 = await QRI.generate();
+    const qri1 = QRI.generate();
+    const qri2 = QRI.generate();
     expect(qri1.toString()).not.toEqual(qri2.toString());
   });
 
   test("QRI without public key should still be valid if no signature required", async () => {
-    const qri = await QRI.generate();
+    const qri = QRI.generate();
     expect(QRI.isValid(qri)).toBe(true); // Valid without a signature
   });
 
   test("QRI with signature verification", async () => {
     const privateKey = QRI.privateKey; // Assume privateKey is defined in the module
     const publicKey = QRI.publicKey; // Assume publicKey is available
-    const qri = await QRI.generate({ privateKey });
+    const qri = QRI.generate({ privateKey });
     expect(QRI.isValid(qri, publicKey)).toBe(true); // Check with public key
   });
 });

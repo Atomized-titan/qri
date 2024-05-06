@@ -26,7 +26,7 @@ To generate a QRI without a cryptographic signature:
 const QRI = require("qrid");
 
 async function generateQRI() {
-  const qri = await QRI.generate();
+  const qri = QRI.generate();
   console.log("Generated QRI:", qri.toString());
 }
 
@@ -45,7 +45,7 @@ MIIEpAIBAAKCAQEA....YOUR_PRIVATE_KEY....AQABAoIBAQCyD....
 -----END RSA PRIVATE KEY-----`;
 
 async function generateQRIWithSignature() {
-  const qri = await QRI.generate(privateKey);
+  const qri = QRI.generate(privateKey);
   console.log("Generated QRI with Signature:", qri.toString());
 }
 
@@ -60,7 +60,7 @@ To validate a QRI (with or without a signature):
 const QRI = require("qrid");
 
 async function validateQRI() {
-  const qri = await QRI.generate();
+  const qri = QRI.generate();
   const isValid = QRI.isValid(qri);
   console.log("Is the QRI valid?", isValid);
 }
@@ -97,7 +97,7 @@ const { publicKey, privateKey } = crypto.generateKeyPairSync("rsa", {
 
 async function generateAndValidateQRI() {
   try {
-    const qriInstance = await QRI.generate({ privateKey });
+    const qriInstance = QRI.generate({ privateKey });
     const qriString = qriInstance.toString();
 
     console.log(`Generated QRI with signature: ${qriString}`);

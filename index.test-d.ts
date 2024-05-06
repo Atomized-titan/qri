@@ -15,7 +15,7 @@ expectType<string | null>(qri.signature);
 
 // Test static methods
 (async () => {
-  const generatedQRI = await QRI.generate();
+  const generatedQRI = QRI.generate();
   expectType<QRI>(generatedQRI);
 
   const parsedQRI = QRI.parse(
@@ -38,7 +38,7 @@ expectType<string | null>(qri.signature);
 // Test the generate method with options
 (async () => {
   const privateKey = "private_key_string";
-  const qriWithSignature = await QRI.generate({ privateKey });
+  const qriWithSignature = QRI.generate({ privateKey });
   expectAssignable<QRI>(qriWithSignature);
   expectType<string>(qriWithSignature.signature);
 })();
