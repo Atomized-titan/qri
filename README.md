@@ -25,12 +25,12 @@ To generate a QRI without a cryptographic signature:
 ```javascript
 const QRI = require("qrid");
 
-async function generateQRI() {
-  const qri = QRI.generate();
-  console.log("Generated QRI:", qri.toString());
+function generateSimpleIdentifier() {
+  const simpleID = QRI.qrid();
+  console.log("Generated Simple ID:", simpleID);
 }
 
-generateQRI();
+generateSimpleIdentifier();
 ```
 
 ### Generating QRIs with Signatures

@@ -112,6 +112,10 @@ class QRI {
       return false; // Consider failing safely by returning false
     }
   }
+
+  static qrid() {
+    return this.generate().toString();
+  }
 }
 
 module.exports = QRI;

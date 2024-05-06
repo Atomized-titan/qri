@@ -24,6 +24,7 @@ declare class QRI {
   static parse(qriString: string): QRI;
   static isValid(qri: QRI, publicKey?: string): boolean;
   static validateSignature(qri: QRI, publicKey: string): boolean;
+  static qrid(): string;
 }
 
 export = QRI;

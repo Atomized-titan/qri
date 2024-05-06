@@ -16,6 +16,12 @@ describe("Quantum-Resistant Identifier System", () => {
     expect(qri.signature).not.toBe(""); // Should have a signature
   });
 
+  test("Simple QRID generation produces a valid instance", async () => {
+    const id = QRI.qrid();
+    const isValid = QRI.isValid(QRI.parse(id));
+    expect(isValid).toBe(true);
+  });
+
   test("QRI has correct segments", async () => {
     const qri = QRI.generate();
     const parts = qri.toString().split("-");
