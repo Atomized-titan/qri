@@ -1,10 +1,19 @@
 {
   "name": "qri",
   "version": "1.0.0",
-  "description": "A Quantum-Resistant Identifier (QRI) generation library providing robust, secure identifiers with optional cryptographic signatures, designed to be resistant to quantum computing threats.",
+  "engine": {
+    "node": ">=14"
+  },
   "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "description": "A Quantum-Resistant Identifier (QRI) generation library providing robust, secure identifiers with optional cryptographic signatures, designed to be resistant to quantum computing threats.",
   "scripts": {
-    "test": "npx jest"
+    "test": "jest",
+    "test:types": "tsd"
   },
   "keywords": [
     "identifier",
@@ -13,13 +22,19 @@
     "nodejs",
     "open-source"
   ],
-  "author": "Atomized-titan",
-  "license": "ISC",
-  "dependencies": {
-    "base-convert-int-array": "^1.0.1",
-    "crypto": "^1.0.1"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Atomized-titan/qri.git"
   },
+  "author": "Pushpal Ghoshal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Atomized-titan/qri/issues"
+  },
+  "homepage": "https://github.com/Atomized-titan/qri#readme",
   "devDependencies": {
-    "jest": "^29.7.0"
+    "@types/node": "^20.12.8",
+    "jest": "^29.7.0",
+    "tsd": "^0.31.0"
   }
 }
